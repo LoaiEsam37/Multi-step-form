@@ -70,7 +70,7 @@
     }
 
     .cardSidebar {
-        @apply bg-[url("../public/bg-sidebar-mobile.svg")] bg-cover rounded-none flex-row justify-center items-start h-[100%];
+        @apply bg-[url("../public/bg-sidebar-mobile.svg")] bg-cover rounded-none flex-row justify-center items-start h-[100%] gap-4 py-3;
     }
 
     .stepNum::before,
@@ -83,7 +83,8 @@
     }
 
     .cardStep {
-        @apply absolute w-[95%] bg-white rounded-lg h-[350px] left-[50%] translate-x-[-50%] translate-y-[-50px];
+        @apply absolute w-[95%] bg-white rounded-lg h-[370px] left-[50%] translate-x-[-50%] translate-y-[-43px];
+        height: max-content !important;
     }
 
     .cardContent {
