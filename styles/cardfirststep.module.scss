@@ -1,0 +1,44 @@
+.stepContainer {
+    @apply flex flex-col justify-center items-start gap-1;
+}
+
+.stepContainer .title {
+    @apply font-[900] text-[25px] text-[#072e65] mt-2 mb-[-5px];
+}
+
+.stepContainer .subtitle {
+    @apply text-[#97979f];
+}
+
+.nameInput,
+.emailInput,
+.phoneInput {
+    @apply w-[100%] px-4 py-2 border border-[#dbdbdd] rounded-md;
+}
+
+.inputError {
+    border: "red solid 2px" !important;
+    outline: "red solid 2px" !important;
+}
+
+.errorMessage {
+    @apply text-xs text-red-600 ml-1;
+}
+
+.inputContainer {
+    @apply row-span-1 col-span-full w-[100%] mt-3;
+}
+
+.inputContainer label {
+    @apply text-[#122231] text-xs;
+}
+
+.inputContainer input {
+    @apply text-sm focus:border-[#919197] outline-none;
+}
+
+@media (max-width: 904px) {
+    .stepContainer {
+        @apply px-5 pb-6;
+    }
+}

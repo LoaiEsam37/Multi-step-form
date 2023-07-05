@@ -1,0 +1,150 @@
+.stepContainer {
+    @apply flex flex-col justify-center items-start gap-1;
+}
+
+.stepContainer .title {
+    @apply font-[900] text-[25px] text-[#072e65] mt-2 mb-[-5px];
+}
+
+.stepContainer .subtitle {
+    @apply text-[#97979f];
+}
+
+.cardsContainer {
+    @apply flex w-[100%] items-center justify-between mt-5;
+}
+
+.cardsContainer .card {
+    @apply flex flex-col items-start justify-start border border-[#97979f] py-3 px-4 rounded-lg w-[140px] h-max cursor-pointer duration-100;
+}
+
+.cardsContainer .activePlanCard {
+    @apply border-[#524e98] bg-[#f8f9fe];
+}
+
+.cardsContainer .card img {
+    @apply mb-7 mt-1;
+}
+
+.cardsContainer .card span {
+    @apply mb-[2px];
+}
+
+.cardsContainer .card span:first-of-type {
+    @apply text-[#072e65] font-[500];
+}
+
+.cardsContainer .card span:nth-of-type(2) {
+    @apply text-[#97979f] text-sm;
+}
+
+.cardsContainer .card span:nth-of-type(3) {
+    @apply text-[#3f5060] text-xs;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+    background-color: #072e65;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(23px);
+    -ms-transform: translateX(23px);
+    transform: translateX(23px);
+}
+
+.togglerContainer {
+    @apply w-[100%] py-3 bg-[#f8f9fe] flex justify-center items-center mt-5;
+}
+
+.switch::before {
+    content: "Monthly";
+    @apply absolute top-[50%] translate-y-[-50%] right-[60px] text-xs text-[#07203e] duration-300;
+}
+
+.switch::after {
+    content: "Yearly";
+    @apply absolute top-[50%] translate-y-[-50%] left-[60px] text-xs text-[#97979f] duration-300;
+}
+
+.switch.active::before {
+    @apply text-[#97979f];
+}
+
+.switch.active::after {
+    @apply text-[#07203e];
+}
+
+.errorMessage {
+    @apply text-xs text-red-600 text-center;
+}
+
+@media (max-width: 904px) {
+    .stepContainer {
+        @apply px-5;
+    }
+
+    .cardsContainer {
+        @apply flex-col gap-3;
+    }
+
+    .card {
+        width: 100% !important;
+        height: 73px !important;
+        padding-top: 5px !important;
+        padding-left: 60px !important;
+        justify-content: flex-start !important;
+        position: relative;
+    }
+
+    .card img {
+        @apply absolute left-3 top-[5px];
+    }
+
+    .cardsContainer .card span {
+        margin-bottom: 0 !important;
+    }
+
+    .cardsContainer .card span:first-of-type {
+        margin-bottom: -3px !important;
+    }
+
+    .togglerContainer {
+        margin-bottom: 10px;
+    }
+}

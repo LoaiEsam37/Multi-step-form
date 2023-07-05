@@ -1,0 +1,45 @@
+.stepContainer {
+    @apply flex flex-col justify-center items-start gap-1;
+}
+
+.stepContainer .title {
+    @apply font-[900] text-[25px] text-[#072e65] mt-2 mb-[-5px];
+}
+
+.stepContainer .subtitle {
+    @apply text-[#97979f];
+}
+
+.cardsContainer {
+    @apply flex w-[100%] flex-col justify-start items-center gap-4 mt-3;
+}
+
+.cardsContainer .card {
+    @apply w-[100%] flex justify-between items-center border border-[#4f4c99] h-max pl-2 pr-5 py-3 rounded-lg relative cursor-pointer duration-100;
+}
+
+.cardsContainer .card.active {
+    @apply bg-[#f8f9fe];
+}
+
+.cardsContainer .card .service {
+    @apply flex flex-col justify-center items-start absolute left-[70px];
+}
+
+.service .serviceName {
+    @apply text-[#072e65] font-[700];
+}
+
+.service .serviceDetails {
+    @apply text-[#97979f];
+}
+
+.cardsContainer .card .servicePrice {
+    @apply text-[#4539ff] font-[500];
+}
+
+@media (max-width: 904px) {
+    .stepContainer {
+        @apply px-5 pb-4;
+    }
+}

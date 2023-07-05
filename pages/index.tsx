@@ -1,13 +1,71 @@
 import Head from "next/head"
-import { Inter } from "next/font/google"
 import styles from "@/styles/home.module.scss"
 import { Button } from "@mui/material"
 import { useState } from "react"
+import CardFirstStep from "@/components/CardFirstStep"
+import CardSecondStep from "@/components/CardSecondStep"
+import CardThirdStep from "@/components/CardThirdStep"
+import CardFourthStep from "@/components/CardFourthStep"
+import { useObjectSelector } from "@/features/formObject/objectSlice"
 
-const inter = Inter({ subsets: ["latin"] })
+import { Ubuntu } from "next/font/google"
+const ubuntu = Ubuntu({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "700"],
+})
 
 export default function Home() {
     const [cardStepNum, setCardStepNum] = useState(1)
+    const [errors, setErrors] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        plan: "",
+        paymentOption: "",
+    })
+    const { name, email, phone, plan, paymentOption, services } =
+        useObjectSelector((state) => state.items)
+    const PersonalInfoVaildation = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (name === "") {
+            setErrors({
+                ...errors,
+                name: "Invaild Name",
+            })
+        } else if (email === "" || !email.match(emailRegex)) {
+            setErrors({
+                ...errors,
+                email: "Invaild Email Address",
+            })
+        } else if (phone === "") {
+            setErrors({
+                ...errors,
+                phone: "Invaild Phone Number",
+            })
+        } else {
+            setCardStepNum(cardStepNum + 1)
+        }
+    }
+    const SelectYourPlanVaildation = () => {
+        if (plan === "") {
+            setErrors({
+                ...errors,
+                plan: "Choose a Plan",
+            })
+        } else {
+            setCardStepNum(cardStepNum + 1)
+        }
+    }
+    const HandleVaildation = () => {
+        switch (cardStepNum) {
+            case 1:
+                PersonalInfoVaildation()
+            case 2:
+                SelectYourPlanVaildation()
+            case 3:
+                setCardStepNum(cardStepNum + 1)
+        }
+    }
     return (
         <>
             <Head>
@@ -15,7 +73,7 @@ export default function Home() {
                 <meta name="description" content="Made by Loai Esam" />
             </Head>
             <article>
-                <main className={`${styles.main} ${inter.className}`}>
+                <main className={`${styles.main} ${ubuntu.className}`}>
                     <div className={styles.card}>
                         <div className={styles.cardSidebar}>
                             <div
@@ -47,7 +105,7 @@ export default function Home() {
                             </div>
                             <div
                                 className={`${styles.stepNum} ${
-                                    cardStepNum === 4 && styles.activeStepNum
+                                    cardStepNum >= 4 && styles.activeStepNum
                                 }`}
                                 before-text="step 4"
                                 after-text="summary"
@@ -57,7 +115,37 @@ export default function Home() {
                         </div>
                         <div className={styles.cardContent}>
                             <div className={styles.cardStepContainer}>
-                                <div className={styles.cardStep}></div>
+                                <div className={styles.cardStep}>
+                                    {(() => {
+                                        switch (cardStepNum) {
+                                            case 1:
+                                                return (
+                                                    <CardFirstStep
+                                                        errors={errors}
+                                                        setErrors={setErrors}
+                                                    />
+                                                )
+                                            case 2:
+                                                return (
+                                                    <CardSecondStep
+                                                        errors={errors}
+                                                        setErrors={setErrors}
+                                                    />
+                                                )
+                                            case 3:
+                                                return <CardThirdStep />
+                                            case 4:
+                                                return <CardFourthStep />
+                                            default:
+                                                return (
+                                                    <span>
+                                                        Sorry Something went
+                                                        wrong
+                                                    </span>
+                                                )
+                                        }
+                                    })()}
+                                </div>
                             </div>
                             <div className={styles.cardNavButtons}>
                                 {cardStepNum > 1 ? (
@@ -77,9 +165,7 @@ export default function Home() {
                                     <Button
                                         variant="contained"
                                         className={styles.nextButton}
-                                        onClick={() =>
-                                            setCardStepNum(cardStepNum + 1)
-                                        }
+                                        onClick={() => HandleVaildation()}
                                     >
                                         Next Step
                                     </Button>
