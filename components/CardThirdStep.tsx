@@ -1,11 +1,33 @@
 import styles from "@/styles/cardthirdstep.module.scss"
 import { Checkbox } from "@mui/material"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import {
+    useObjectDispatch,
+    useObjectSelector,
+    setServices,
+} from "@/features/formObject/objectSlice"
 
 export default function CardThirdStep() {
+    const dispatch = useObjectDispatch()
+    const { paymentOption } = useObjectSelector((state) => state.items)
     const [onlineService, setOnlineService] = useState(false)
     const [largerStorage, setLargerStorage] = useState(false)
     const [customizableProfile, setCustomizableProfile] = useState(false)
+    const [services, setServicesNames] = useState<{ [key: string]: boolean }>({
+        onlineService: false,
+        largerStorage: false,
+        customizableProfile: false,
+    })
+
+    useEffect(() => {
+        setServicesNames({
+            ...services,
+            onlineService: onlineService,
+            largerStorage: largerStorage,
+            customizableProfile: customizableProfile,
+        })
+        dispatch(setServices(services))
+    }, [onlineService, largerStorage, customizableProfile, dispatch, services])
 
     return (
         <div className={styles.stepContainer}>
@@ -29,7 +51,9 @@ export default function CardThirdStep() {
                             Access to multiplayer games
                         </span>
                     </div>
-                    <span className={styles.servicePrice}>+$1/mo</span>
+                    <span className={styles.servicePrice}>
+                        {paymentOption === "yearly" ? "+$10/yr" : "+$1/mo"}
+                    </span>
                 </div>
                 <div
                     className={`${styles.card} ${
@@ -46,7 +70,9 @@ export default function CardThirdStep() {
                             Extra 1TB of cloud save
                         </span>
                     </div>
-                    <span className={styles.servicePrice}>+$2/mo</span>
+                    <span className={styles.servicePrice}>
+                        {paymentOption === "yearly" ? "+$20/yr" : "+$2/mo"}
+                    </span>
                 </div>
                 <div
                     className={`${styles.card} ${
@@ -63,7 +89,9 @@ export default function CardThirdStep() {
                             Custom theme on your profile
                         </span>
                     </div>
-                    <span className={styles.servicePrice}>+$2/mo</span>
+                    <span className={styles.servicePrice}>
+                        {paymentOption === "yearly" ? "+$20/yr" : "+$2/mo"}
+                    </span>
                 </div>
             </div>
         </div>

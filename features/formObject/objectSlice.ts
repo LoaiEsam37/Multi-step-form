@@ -9,7 +9,7 @@ interface Item {
     phone: string;
     plan: string;
     paymentOption: string;
-    services: string[];
+    services: {[key: string]: boolean};
 }
 
 interface ObjectState {
@@ -23,7 +23,11 @@ const initialState: ObjectState = {
         phone: "",
         plan: "",
         paymentOption: "",
-        services: [],
+        services: {
+            onlineService: false,
+            largerStorage: false,
+            customizableProfile: false,
+        },
     },
 };
 
@@ -46,7 +50,7 @@ export const objectSlice = createSlice({
         setPaymentOption: (state, action: PayloadAction<string>) => {
             state.items.paymentOption = action.payload;
         },
-        setServices: (state, action: PayloadAction<string[]>) => {
+        setServices: (state, action: PayloadAction<{ [key: string]: boolean }>) => {
             state.items.services = action.payload;
         },
     },

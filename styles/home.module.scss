@@ -1,97 +1,102 @@
 .main {
-    @apply w-screen h-screen flex justify-center items-center bg-[#eef5ff];
+  @apply w-screen h-screen flex justify-center items-center bg-[#eef5ff];
 }
 
 .card {
-    @apply w-[900px] h-[500px] bg-white rounded-lg p-[20px] grid grid-cols-3;
+  @apply w-[900px] h-[500px] bg-white rounded-lg p-[20px] grid grid-cols-3;
 }
 
 .cardSidebar {
-    @apply col-span-1 h-[100%] rounded-lg flex flex-col justify-start items-start p-7 gap-6 text-xs bg-contain bg-no-repeat bg-[url("../public/bg-sidebar-desktop.svg")];
+  @apply col-span-1 h-[100%] rounded-lg flex flex-col justify-start items-start p-7 gap-6 text-xs bg-contain bg-no-repeat bg-[url("../public/bg-sidebar-desktop.svg")];
 }
 
 .stepNum {
-    @apply text-white rounded-[50%] border-white border w-7 h-7 flex justify-center items-center text-center relative;
+  @apply text-white rounded-[50%] border-white border w-7 h-7 flex justify-center items-center text-center relative;
 }
 
 .stepNum span {
-    @apply block flex-1;
+  @apply block flex-1;
 }
 
 .stepNum::before {
-    content: attr(before-text);
-    @apply text-[#b3b1ff] w-max h-max absolute uppercase left-10 top-[-4px] text-[10px];
+  content: attr(before-text);
+  @apply text-[#b3b1ff] w-max h-max absolute uppercase left-10 top-[-4px] text-[10px];
 }
 
 .stepNum::after {
-    content: attr(after-text);
-    @apply text-white uppercase bottom-[-4px] absolute left-10 h-max w-max font-[700] tracking-[.1rem] text-xs;
+  content: attr(after-text);
+  @apply text-white uppercase bottom-[-4px] absolute left-10 h-max w-max font-[700] tracking-[.1rem] text-xs;
 }
 
 .activeStepNum {
-    @apply text-black bg-[#bee1fd] border-[#bee1fd];
+  @apply text-black bg-[#bee1fd] border-[#bee1fd];
 }
 
 .cardContent {
-    @apply col-span-2 h-[100%] px-14;
+  @apply col-span-2 h-[100%] px-14;
 }
 
 .cardStepContainer {
-    @apply h-[400px];
+  @apply h-[400px];
 }
 
 .cardStep {
-    @apply h-[100%];
+  @apply h-[100%];
 }
 
 .cardNavButtons {
-    @apply flex justify-between items-center;
+  @apply flex justify-between items-center;
 }
 
 .nextButton {
-    background-color: #03295a !important;
-    text-transform: capitalize !important;
-    box-shadow: none !important;
+  background-color: #03295a !important;
+  text-transform: capitalize !important;
+  box-shadow: none !important;
 }
 
 .confirmButton {
-    background-color: #483ffe !important;
-    text-transform: capitalize !important;
-    box-shadow: none !important;
+  background-color: #483ffe !important;
+  text-transform: capitalize !important;
+  box-shadow: none !important;
 }
 
 .backButton {
-    text-transform: capitalize !important;
+  text-transform: capitalize !important;
 }
 
 @media (max-width: 904px) {
-    .card {
-        @apply grid-cols-1 h-screen p-0;
-    }
+  .card {
+    @apply grid-cols-1 h-screen p-0;
+    background-color: #eef5ff !important;
+  }
 
-    .cardSidebar {
-        @apply bg-[url("../public/bg-sidebar-mobile.svg")] bg-cover rounded-none flex-row justify-center items-start h-[100%] gap-4 py-3;
-    }
+  .cardSidebar {
+    @apply bg-[url("../public/bg-sidebar-mobile.svg")] bg-cover rounded-none flex-row justify-center items-start h-[78%] gap-4 py-3;
+  }
 
-    .stepNum::before,
-    .stepNum::after {
-        display: none;
-    }
+  .stepNum::before,
+  .stepNum::after {
+    display: none;
+  }
 
-    .cardStepContainer {
-        @apply bg-[#eef5ff];
-    }
+  .cardStepContainer {
+    @apply bg-[#eef5ff];
+  }
 
-    .cardStep {
-        @apply absolute w-[95%] bg-white rounded-lg h-[370px] left-[50%] translate-x-[-50%] translate-y-[-43px];
-        height: max-content !important;
-    }
+  .cardStep {
+    @apply absolute w-[93%] bg-white rounded-lg h-[370px] left-[50%] translate-x-[-50%] top-[90px];
+    height: max-content !important;
+  }
 
-    .cardContent {
-        @apply p-0;
-    }
+  .cardContent {
+    @apply p-0 flex flex-col;
+  }
 
-    .cardNavButtons {
-        @apply w-[95%] m-auto pt-4;
-    }
+  .cardNavButtons {
+    @apply w-[100%] mt-auto pt-4 mb-0 bg-[#fff] pb-6 px-2;
+  }
+
+  .cardSidebar .stepNum {
+    @apply h-9 w-9 text-base top-3;
+  }
 }

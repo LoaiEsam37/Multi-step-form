@@ -33,17 +33,24 @@ export default function CardSecondStep({
     const dispatch = useObjectDispatch()
     const [plan, setPlanNum] = useState(0)
     const [isChecked, setIsChecked] = useState(false) // false -> monthly // true -> yearly
-    const newPlan = plan === 1 ? "arcade" : plan === 2 ? "advanced" : "pro"
+    const newPlan =
+        plan === 1
+            ? "arcade"
+            : plan === 2
+            ? "advanced"
+            : plan === 3
+            ? "pro"
+            : ""
     dispatch(setPlan(newPlan))
     dispatch(setPaymentOption(isChecked ? "yearly" : "monthly"))
     useEffect(() => {
         if (plan !== 0) {
-            setErrors({
-                ...errors,
+            setErrors((prevErrors) => ({
+                ...prevErrors,
                 plan: "",
-            })
+            }))
         }
-    }, [errors, plan, setErrors])
+    }, [plan, setErrors])
     return (
         <div className={styles.stepContainer}>
             <h2 className={styles.title}>Select your plan</h2>

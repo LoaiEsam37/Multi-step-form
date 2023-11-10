@@ -40,6 +40,15 @@
 
 @media (max-width: 904px) {
     .stepContainer {
-        @apply px-5 pb-4;
+        @apply px-5 pb-7;
+    }
+
+    .subtitle {
+        padding-right: 50px !important;
+        font-size: large;
+    }
+
+    .service .serviceDetails {
+        @apply text-xs;
     }
 }
