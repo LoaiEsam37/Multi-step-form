@@ -1,0 +1,22 @@
+.stepContainer {
+  @apply flex flex-col justify-center items-center gap-1 text-center h-full;
+}
+
+.icon {
+  background-image: url("../public/icon-thank-you.svg");
+  @apply bg-center bg-contain bg-no-repeat w-[60px] h-[60px];
+}
+
+.stepContainer h2 {
+  @apply font-bold text-[#21334b] text-2xl mt-5;
+}
+
+.stepContainer p {
+  @apply text-[#97979f] mt-2 max-w-sm text-sm;
+}
+
+@media (max-width: 904px) {
+  .stepContainer {
+    @apply px-5 pb-7 pt-5 h-[400px];
+  }
+}

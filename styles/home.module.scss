@@ -64,6 +64,10 @@
   text-transform: capitalize !important;
 }
 
+.cardNavButtonsHidden {
+  @apply hidden;
+}
+
 @media (max-width: 904px) {
   .card {
     @apply grid-cols-1 h-screen p-0;

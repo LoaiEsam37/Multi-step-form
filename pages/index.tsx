@@ -6,6 +6,7 @@ import CardFirstStep from "@/components/CardFirstStep"
 import CardSecondStep from "@/components/CardSecondStep"
 import CardThirdStep from "@/components/CardThirdStep"
 import CardFourthStep from "@/components/CardFourthStep"
+import Thanks from "@/components/Thanks"
 import { useObjectSelector } from "@/features/formObject/objectSlice"
 
 import { Ubuntu } from "next/font/google"
@@ -68,6 +69,12 @@ export default function Home() {
         setCardStepNum(cardStepNum + 1)
         break
     }
+  }
+
+  const NavToThanksPage = () => {
+    const userData = { name, email, phone, plan, paymentOption, services }
+    alert(JSON.stringify(userData))
+    setCardStepNum(cardStepNum + 1)
   }
   return (
     <>
@@ -141,14 +148,20 @@ export default function Home() {
                         return (
                           <CardFourthStep setCardStepNum={setCardStepNum} />
                         )
+                      case 5:
+                        return <Thanks />
                       default:
                         return <span>Sorry Something went wrong</span>
                     }
                   })()}
                 </div>
               </div>
-              <div className={styles.cardNavButtons}>
-                {cardStepNum > 1 ? (
+              <div
+                className={`${styles.cardNavButtons} ${
+                  cardStepNum === 5 && styles.cardNavButtonsHidden
+                }`}
+              >
+                {cardStepNum > 1 && cardStepNum < 5 ? (
                   <Button
                     variant="text"
                     className={styles.backButton}
@@ -168,7 +181,11 @@ export default function Home() {
                     Next Step
                   </Button>
                 ) : cardStepNum === 4 ? (
-                  <Button variant="contained" className={styles.confirmButton}>
+                  <Button
+                    variant="contained"
+                    className={styles.confirmButton}
+                    onClick={() => NavToThanksPage()}
+                  >
                     Confirm
                   </Button>
                 ) : (
