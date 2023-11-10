@@ -1,0 +1,69 @@
+.stepContainer {
+  @apply flex flex-col justify-center items-start gap-1;
+}
+
+.stepContainer .title {
+  @apply font-[900] text-[25px] text-[#072e65] mt-2 mb-[-5px];
+}
+
+.stepContainer .subtitle {
+  @apply text-[#97979f];
+}
+
+.previewContainer {
+  @apply bg-[#f8f9fe] rounded-lg w-full h-full px-6 py-3 mt-8;
+}
+
+.plan .text {
+  @apply text-[#072e65] font-bold capitalize;
+}
+
+.planCard .price {
+  @apply text-[#072e65] font-bold;
+}
+
+.plan .text + span {
+  @apply text-[#97979f] underline cursor-pointer;
+}
+
+.planCard {
+  @apply flex justify-between items-center border-b pb-5 mb-5;
+}
+
+.plan {
+  @apply flex flex-col justify-start leading-6;
+}
+
+.servicesCard {
+  @apply flex flex-col gap-[10px] text-sm;
+}
+
+.serviceWrapper {
+  @apply flex justify-between items-center;
+}
+
+.serviceWrapper .service {
+  @apply text-[#97979f];
+}
+
+.serviceWrapper .price {
+  @apply text-[#21334b];
+}
+
+.totalPriceCard {
+  @apply flex justify-between items-center w-full px-6 mt-4;
+}
+
+.totalPriceCard span:first-child {
+  @apply text-[#97979f] text-sm;
+}
+
+.totalPriceCard .price {
+  @apply text-[#473eef] font-bold text-lg;
+}
+
+@media (max-width: 904px) {
+  .stepContainer {
+    @apply px-5 pb-7 pt-5;
+  }
+}
